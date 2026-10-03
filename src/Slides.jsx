@@ -214,8 +214,8 @@ export const SlideTodoList = ({ isActive }) => {
                   
                   <div className="flex items-center gap-4 mt-1">
                     {/* Input Owner */}
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Owner:</span>
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-1">Owner:</span>
                       <Editable 
                         value={todo.owner} 
                         onChange={(val) => { 
@@ -247,6 +247,7 @@ export const SlideTodoList = ({ isActive }) => {
                             newList[i] = { ...newList[i], deadline: e.target.value }; 
                             updateData('todoList', newList); 
                           }} 
+                          onClick={(e) => { try { e.target.showPicker(); } catch (err) {} }}
                           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                           data-html2canvas-ignore="true" /* KUNCI PERBAIKAN: Sembunyikan mutlak dari jepretan kamera */
                         />

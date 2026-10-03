@@ -62,7 +62,16 @@ export const MeetingProvider = ({ children }) => {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const urlDate = urlParams.get('date');
+    let urlDate = urlParams.get('date');
+    
+    // PENANGKAL ERROR: Selalu paksa format URL menjadi YYYY-MM-DD
+    if (urlDate) {
+      const parts = urlDate.split('-');
+      if (parts.length === 3) {
+        // PadStart akan otomatis menambahkan '0' jika angkanya cuma 1 digit
+        urlDate = `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
+      }
+    }
     setActiveDate(urlDate || getDocId());
   }, []);
 
@@ -103,7 +112,9 @@ export const MeetingProvider = ({ children }) => {
               ...INITIAL_STATE,
               ...lastData,
               meetingDate: getCurrentDate(activeDate),
-              ratings: {}, 
+              ratings: {},
+              attendances: INITIAL_STATE.attendances, 
+              scorecardTitles: INITIAL_STATE.scorecardTitles,
               goodNews: { owner: '', integrator: '', team: '' } 
             };
 
@@ -174,7 +185,11 @@ export const MeetingProvider = ({ children }) => {
       
       if (!snap.empty) {
         const lastData = snap.docs[0].data();
-        const newData = { ...lastData, meetingDate: getCurrentDate(activeDate), ratings: {}, goodNews: { owner: '', integrator: '', team: '' } };
+        const newData = { ...lastData, meetingDate: getCurrentDate(activeDate), 
+          attendances: INITIAL_STATE.attendances,
+          scorecardTitles: INITIAL_STATE.scorecardTitles,
+          ratings: {}, 
+          goodNews: { owner: '', integrator: '', team: '' } };
         
         setData(newData);
         pendingUpdatesRef.current = { ...lastData, meetingDate: getCurrentDate(activeDate), ratings: {}, goodNews: { owner: '', integrator: '', team: '' } };
