@@ -21,7 +21,7 @@ const SLIDES_CONFIG = [
   { type: 'cover', label: 'Cover Rapat', group: 'Pembuka' },
   { type: 'awal', label: 'Segmen Awal', group: 'Pembuka' },
   { type: 'scorecard', key: 'ecommerceKPI', title: 'E-Commerce', label: 'Scorecard · E-Commerce', group: 'Scorecard' },
-  { type: 'scorecard', key: 'fulfilmentKPI', title: 'Fulfillment & Ops', label: 'Scorecard · Fulfillment & Ops', group: 'Scorecard' },
+  { type: 'scorecard', key: 'fulfillmentKPI', title: 'Fulfillment & Ops', label: 'Scorecard · Fulfillment & Ops', group: 'Scorecard' },
   { type: 'scorecard', key: 'lkaKPI', title: 'Live,Kol,Affiliate', label: 'Scorecard · Live,Kol,Affiliate', group: 'Scorecard' },
   { type: 'scorecard', key: 'hcgaKPI', title: 'HCGA', label: 'Scorecard · HCGA', group: 'Scorecard' },
   { type: 'scorecard', key: 'creativeKPI', title: 'Creative & Sosmed', label: 'Scorecard · Creative & Sosmed', group: 'Scorecard' },
