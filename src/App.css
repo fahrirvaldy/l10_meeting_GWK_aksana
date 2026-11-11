@@ -77,6 +77,16 @@ body.exporting-image .issue-row {
   padding-top: 3px !important;
   padding-bottom: 3px !important;
   break-inside: avoid;
+  /* Checkbox & tombol aksi dihapus dari klon ekspor (data-html2canvas-ignore),
+     sehingga kolom 20px + auto tidak terpakai dan teks isu bisa tergencet di
+     kolom 20px. Paksa satu kolom penuh agar teks isu memakai lebar baris. */
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* Kolom aksi kosong setelah tombolnya dihapus saat ekspor; sembunyikan agar
+   tidak menghasilkan baris grid kosong + gap ekstra di tiap baris isu. */
+body.exporting-image .issue-row-actions {
+  display: none !important;
 }
 
 body.exporting-image .issue-text {
